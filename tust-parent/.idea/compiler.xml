@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="spring-security-demo" />
+        <module name="tust-cart-interface" />
+        <module name="tust-cart-service" />
+        <module name="tust-cart-web" />
+        <module name="tust-common" />
+        <module name="tust-content-interface" />
+        <module name="tust-content-service" />
+        <module name="tust-dao" />
+        <module name="tust-manager-web" />
+        <module name="tust-order-interface" />
+        <module name="tust-order-service" />
+        <module name="tust-page-interface" />
+        <module name="tust-page-service" />
+        <module name="tust-page-web" />
+        <module name="tust-pojo" />
+        <module name="tust-portal-web" />
+        <module name="tust-search-interface" />
+        <module name="tust-search-service" />
+        <module name="tust-search-web" />
+        <module name="tust-sellergoods-interface" />
+        <module name="tust-sellergoods-service" />
+        <module name="tust-shop-web" />
+        <module name="tust-solr-util" />
+        <module name="tust-user-interface" />
+        <module name="tust-user-service" />
+        <module name="tust-user-web" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

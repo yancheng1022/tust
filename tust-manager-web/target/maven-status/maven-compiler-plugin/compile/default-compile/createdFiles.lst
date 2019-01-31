@@ -1,0 +1,10 @@
+com\tust\manager\controller\UploadController.class
+com\tust\manager\controller\ItemCatController.class
+com\tust\manager\controller\ContentController.class
+com\tust\manager\controller\TypeTemplateController.class
+com\tust\manager\controller\LoginController.class
+com\tust\manager\controller\BrandController.class
+com\tust\manager\controller\SpecificationController.class
+com\tust\manager\controller\GoodsController.class
+com\tust\manager\controller\ContentCategoryController.class
+com\tust\manager\controller\SellerController.class
