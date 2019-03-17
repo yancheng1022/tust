@@ -32,7 +32,7 @@ public interface OrderService {
 	 * @Date: 2019/1/29 20:13
 	 * @Description: 增加
 	*/
-	public void add(Order order);
+	public long[] add(Order order);
 	
 	
 	/**

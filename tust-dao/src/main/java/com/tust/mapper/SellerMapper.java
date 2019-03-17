@@ -29,4 +29,6 @@ public interface SellerMapper {
     int updateByPrimaryKeySelective(Seller record);
 
     int updateByPrimaryKey(Seller record);
+
+    List<Seller> findNewSeller();
 }

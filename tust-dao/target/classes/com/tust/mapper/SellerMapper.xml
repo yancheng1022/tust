@@ -510,4 +510,8 @@
       bank_name = #{bankName,jdbcType=VARCHAR}
     where seller_id = #{sellerId,jdbcType=VARCHAR}
   </update>
+
+  <select id="findNewSeller" resultType="com.tust.pojo.Seller">
+    select * from t_seller order BY create_time desc limit 0,5
+  </select>
 </mapper>

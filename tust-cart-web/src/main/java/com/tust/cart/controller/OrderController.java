@@ -43,20 +43,15 @@ public class OrderController {
 	 * @return
 	 */
 	@RequestMapping("/add")
-	public Result add(@RequestBody Order order){
+	public long[] add(@RequestBody Order order){
 		
 		//获取当前登录人账号
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		order.setUserId(username);
 		order.setSourceType("2");//订单来源  PC
-		
-		try {
-			orderService.add(order);
-			return new Result(true, "增加成功");
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new Result(false, "增加失败");
-		}
+
+		long[] orderIds = orderService.add(order);
+		return orderIds;
 	}
 	
 	/**

@@ -1,1 +1,3 @@
 com\tust\portal\controller\ContentController.class
+com\tust\portal\controller\SellerController.class
+com\tust\portal\controller\GoodsController.class

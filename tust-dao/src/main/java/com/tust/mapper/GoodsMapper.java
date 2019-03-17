@@ -1,5 +1,6 @@
 package com.tust.mapper;
 
+import com.tust.VO.GoodsVO;
 import com.tust.pojo.Goods;
 import com.tust.pojo.GoodsExample;
 import org.apache.ibatis.annotations.Param;
@@ -29,4 +30,6 @@ public interface GoodsMapper {
     int updateByPrimaryKeySelective(Goods record);
 
     int updateByPrimaryKey(Goods record);
+
+    List<Goods> findMallGoods();
 }

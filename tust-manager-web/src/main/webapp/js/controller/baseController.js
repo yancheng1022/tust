@@ -23,6 +23,7 @@ app.controller('baseController' ,function($scope){
 	//更新复选
 	$scope.updateSelection = function($event, id) {		
 		if($event.target.checked){//如果是被选中,则增加到数组
+			console.log(id);
 			$scope.selectIds.push( id);			
 		}else{
 			var idx = $scope.selectIds.indexOf(id);

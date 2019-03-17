@@ -6,11 +6,9 @@ import com.github.pagehelper.PageInfo;
 import com.tust.mapper.ItemCatMapper;
 import com.tust.pojo.ItemCat;
 import com.tust.pojo.ItemCatExample;
-import com.tust.pojo.PageResult;
 import com.tust.sellergoods.service.ItemCatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -40,12 +38,16 @@ public class ItemCatServiceImpl implements ItemCatService {
     public void add(ItemCat itemCat)
     {
         itemCatMapper.insert(itemCat);
+        redisTemplate.boundHashOps("itemCat").put(itemCat.getName(), itemCat.getTypeId());
+
     }
 
 
     @Override
     public void update(ItemCat itemCat){
         itemCatMapper.updateByPrimaryKey(itemCat);
+        redisTemplate.boundHashOps("itemCat").delete(itemCat.getId());
+        redisTemplate.boundHashOps("itemCat").put(itemCat.getName(), itemCat.getTypeId());
     }
 
 
@@ -59,6 +61,7 @@ public class ItemCatServiceImpl implements ItemCatService {
     public void delete(Long[] ids) {
         for(Long id:ids){
             itemCatMapper.deleteByPrimaryKey(id);
+            redisTemplate.boundHashOps("itemCat").delete(id);
         }
     }
 
@@ -87,14 +90,40 @@ public class ItemCatServiceImpl implements ItemCatService {
         ItemCatExample.Criteria criteria = example.createCriteria();
         criteria.andParentIdEqualTo(parentId);
 
-//        System.out.println("将模板ID放入缓存");
-//
-//        List<ItemCat> itemCatList = findAll();
-//        for(ItemCat itemCat:itemCatList){
-//            redisTemplate.boundHashOps("itemCat").put(itemCat.getName(), itemCat.getTypeId());
-//        }
-//        System.out.println("将模板ID放入缓存");
+
+        if(redisTemplate.boundHashOps("itemCat").size()==0){
+            System.out.println("将模板ID放入缓存");
+            List<ItemCat> itemCatList = findAll();
+            for(ItemCat itemCat:itemCatList){
+                redisTemplate.boundHashOps("itemCat").put(itemCat.getName(), itemCat.getTypeId());
+            }
+            System.out.println("将模板ID放入缓存");
+        }
         return itemCatMapper.selectByExample(example);
     }
 
+//    @Override
+//    public CatResult getItemCatList() {
+//        CatResult catResult = new CatResult();
+//        //查询分类列表
+//        catResult.setData(getCatList(0L));
+//        return catResult;
+//    }
+
+//    private List<?>getCatList(Long parentId){
+//        List<ItemCat> itemCatList = findByParentId(parentId);
+//        List<CatNode> objects = new ArrayList<>();
+//        //向list中添加节点
+//        for (ItemCat itemCat:itemCatList){
+//            CatNode catNode = new CatNode();
+//            if (parentId ==0){
+//                catNode.setName("<a href='http://localhost:9104/search.html#?keywords="+itemCat.getName()+"'>"+itemCat.getName()+"</a>");
+//
+//            }else {
+//                catNode.setName(itemCat.getName());
+//            }
+//            catNode.setUrl("http://localhost:9104/search.html#?keywords="+itemCat.getName()+"");
+//
+//        }
+//    }
 }

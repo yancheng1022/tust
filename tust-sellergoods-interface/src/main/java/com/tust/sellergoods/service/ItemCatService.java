@@ -60,4 +60,10 @@ public interface ItemCatService {
      * @Description: 根据parentId查询商品分类列表
     */
     public List<ItemCat> findByParentId(Long parentId);
+    /**
+     * @Author: Yancheng Guo
+     * @Date: 2019/3/7 15:27
+     * @Description: 前端系统展示分类列表
+    */
+//    public CatResult getItemCatList();
 }

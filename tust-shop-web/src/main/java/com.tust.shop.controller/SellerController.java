@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.tust.pojo.Result;
 import com.tust.pojo.Seller;
 import com.tust.sellergoods.service.SellerService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,7 +64,15 @@ public class SellerController {
 
     @RequestMapping("/findOne")
     public Seller findOne(String id){
-        return sellerService.findOne(id);
+        Seller seller = sellerService.findOne(id);
+        return seller;
+    }
+
+    @RequestMapping("/findLoginUser")
+    public Seller findLoginUser(){
+        String id = SecurityContextHolder.getContext().getAuthentication().getName();
+        Seller seller = findOne(id);
+        return seller;
     }
 
 

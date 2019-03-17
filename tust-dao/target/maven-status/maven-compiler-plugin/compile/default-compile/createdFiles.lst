@@ -12,6 +12,7 @@ com\tust\mapper\TypeTemplateMapper.class
 com\tust\mapper\ItemCatMapper.class
 com\tust\mapper\AddressMapper.class
 com\tust\mapper\SellerMapper.class
+com\tust\mapper\AnnouncementMapper.class
 com\tust\mapper\SpecificationMapper.class
 com\tust\mapper\UserMapper.class
 com\tust\mapper\ItemMapper.class

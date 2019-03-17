@@ -1,5 +1,6 @@
 package com.tust.cart.service.impl;
 
+import com.alibaba.druid.sql.visitor.functions.If;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.tust.VO.CartVo;
 import com.tust.cart.service.CartService;
@@ -11,6 +12,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -73,7 +76,6 @@ public class CartServiceImpl implements CartService {
                     cartList.remove(cartVo);
                 }
             }
-
         }
 
         return cartList;
@@ -135,5 +137,24 @@ public class CartServiceImpl implements CartService {
             }
         }
         return null;
+    }
+
+    public void deleteRedis(Long[] ids,String name) {
+        List<CartVo> cartList= (ArrayList<CartVo>)redisTemplate.boundHashOps("cartList").get(name);
+        if (cartList == null){return;}
+        for (Long id:ids){
+            for (int i=0;i<cartList.size();i++){
+                for (int j=0;j<cartList.get(i).getOrderItemList().size();j++){
+                    if (cartList.get(i).getOrderItemList().get(j).getItemId().equals(id)){
+                        cartList.get(i).getOrderItemList().remove(j);
+                    }
+                }
+            }
+        }
+        redisTemplate.boundHashOps("cartList").delete(name);
+        if (redisTemplate.boundHashOps("cartList").get(name)!=null){
+            saveCartListToRedis(name,cartList);
+        }
+
     }
 }

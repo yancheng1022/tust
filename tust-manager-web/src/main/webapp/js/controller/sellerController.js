@@ -90,4 +90,5 @@ app.controller('sellerController' ,function($scope,$controller   ,sellerService)
 		);
 	}
 
+	$scope.status=["未审核","审核通过","审核未通过","封禁"];
 });	

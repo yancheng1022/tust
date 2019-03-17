@@ -66,4 +66,10 @@ public interface GoodsService {
     public void updateStatus(Long[] ids,String status);
     public List<Item>	findItemListByGoodsIdListAndStatus(Long []goodsIds, String status);
 
+    /**
+     * @Author: Yancheng Guo
+     * @Date: 2019/3/9 8:49
+     * @Description: 查询商城直销商品
+    */
+    List<GoodsVO> findMallGoods();
 }

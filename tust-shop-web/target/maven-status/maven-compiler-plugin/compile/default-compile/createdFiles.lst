@@ -4,3 +4,4 @@ com\tust\shop\controller\UploadController.class
 com\tust\shop\controller\GoodsController.class
 com\tust\shop\controller\SellerController.class
 com\tust\shop\controller\ItemCatController.class
+com\tust\shop\controller\LoginController.class

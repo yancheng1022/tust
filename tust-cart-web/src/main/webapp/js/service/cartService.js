@@ -35,4 +35,10 @@ app.service('cartService',function($http){
 	this.submitOrder=function(order){
 		return $http.post('order/add.do',order);
 	}
+
+	//删除
+	this.dele=function(ids){
+		console.log(ids)
+		return $http.get('../cart/delete.do?ids='+ids);
+	}
 });

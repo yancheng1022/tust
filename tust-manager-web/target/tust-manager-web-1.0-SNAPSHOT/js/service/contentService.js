@@ -17,7 +17,7 @@ app.service('contentService',function($http){
 	this.add=function(entity){
 		return  $http.post('../content/add.do',entity );
 	}
-	//修改 
+	//修改
 	this.update=function(entity){
 		return  $http.post('../content/update.do',entity );
 	}
@@ -28,5 +28,15 @@ app.service('contentService',function($http){
 	//搜索
 	this.search=function(page,rows,searchEntity){
 		return $http.post('../content/search.do?page='+page+"&rows="+rows, searchEntity);
-	}    	
+	}
+	//网站公告
+	this.findAnnouncement=function(){
+		return $http.post('../content/findAnnouncement.do');
+	}
+
+	//修改公告
+	this.updateAnnouncement=function(announcement){
+		console.log(announcement);
+		return  $http.post('../content/updateAnnouncement.do',announcement);
+	}
 });

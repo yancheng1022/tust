@@ -5,10 +5,13 @@ import com.github.pagehelper.PageInfo;
 import com.tust.pojo.Result;
 import com.tust.pojo.User;
 import com.tust.user.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.dubbo.config.annotation.Reference;
+
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * controller
@@ -21,7 +24,9 @@ public class UserController {
 
 	@Reference
 	private UserService userService;
-	
+
+	@Autowired
+	private HttpServletResponse response;
 	/**
 	 * 返回全部列表
 	 * @return
@@ -48,7 +53,10 @@ public class UserController {
 	 */
 	@RequestMapping("/add")
 	public Result add(@RequestBody User user){
-		
+		//设置允许访问的域
+		response.setHeader("Access-Control-Allow-Origin", "http://localhost:8080");
+		//允许携带凭证（cookie）
+		response.setHeader("Access-Control-Allow-Credentials", "true");
 		try {
 			userService.add(user);
 			return new Result(true, "增加成功");

@@ -66,4 +66,6 @@ public interface SellerService {
      * @Description: 更新状态
     */
     public void updateStatus(String sellerId,String status);
+
+    List<Seller> findNewSeller();
 }

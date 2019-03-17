@@ -142,4 +142,9 @@ public class SellerServiceImpl implements SellerService {
         seller.setStatus(status);
         sellerMapper.updateByPrimaryKey(seller);
     }
+
+    @Override
+    public List<Seller> findNewSeller() {
+        return sellerMapper.findNewSeller();
+    }
 }

@@ -81,7 +81,7 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
 
         }
         List<TypeTemplate> typeTemplates = typeTemplateMapper.selectByExample(example);
-        //缓存处理
+        //缓存数据初始化
         saveToRedis();
         System.out.println("缓存处理");
         return new PageInfo(typeTemplates);

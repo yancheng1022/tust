@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tust.mapper.AnnouncementMapper" >
+
+    <update id="updateAnnouncement" parameterType="string" >
+        update t_announcement
+        set announcement = #{announcement}
+        where id = 1;
+    </update>
+
+    <select id="findAnnouncement" resultType="String">
+        select announcement from t_announcement
+        where id = 1;
+    </select>
+</mapper>

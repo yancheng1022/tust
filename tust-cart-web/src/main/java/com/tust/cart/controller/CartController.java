@@ -2,6 +2,7 @@ package com.tust.cart.controller;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -100,9 +101,38 @@ public class CartController {
 			e.printStackTrace();
 			return new Result(false, "存入购物车失败");
 		}
-		
-		
 	}
+
+	@RequestMapping("/delete")
+	public Result delete(Long[] ids,HttpServletRequest request,HttpServletResponse response){
+		try {
+			String name = SecurityContextHolder.getContext().getAuthentication().getName();
+			if (name != null){
+				cartService.deleteRedis(ids,name);
+				Cookie[] cookies = request.getCookies();//这样便可以获取一个cookie数组
+				if (cookies != null){
+
+					for (Cookie cookie:cookies){
+						cookie.setMaxAge(0);
+					}
+				}
+			}else {
+				Cookie[] cookies = request.getCookies();//这样便可以获取一个cookie数组
+				if (cookies != null){
+
+					for (Cookie cookie:cookies){
+						cookie.setMaxAge(0);
+					}
+				}
+			}
+
+			return new Result(true,"删除成功");
+		}catch (Exception e){
+			e.printStackTrace();
+			return new Result(false,"删除失败");
+		}
+	}
+
 	
 	
 }

@@ -15,10 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.swing.*;
 import java.awt.*;
 import java.io.FileReader;
-import java.util.Arrays;
-import java.util.Date;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 @Service
 //@Transactional
@@ -51,6 +49,7 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public void add(GoodsVO goodsVO) {
         goodsVO.getGoods().setAuditStatus("0"); //状态：未审核
+        goodsVO.getGoods().setIsDelete("0");
         goodsMapper.insert(goodsVO.getGoods());
 
         goodsVO.getGoodsDesc().setGoodsId(goodsVO.getGoods().getId()); //商品表id传给扩展表
@@ -157,7 +156,7 @@ public class GoodsServiceImpl implements GoodsService {
         PageHelper.startPage(pageNum,pageSize);
         GoodsExample example=new GoodsExample();
         GoodsExample.Criteria criteria = example.createCriteria();
-        criteria.andIsDeleteIsNull();//指定条件为未逻辑删除记录
+
         if(goods!=null){
             if(goods.getSellerId()!=null && goods.getSellerId().length()>0){
                 criteria.andSellerIdEqualTo(goods.getSellerId());
@@ -180,7 +179,7 @@ public class GoodsServiceImpl implements GoodsService {
             if(goods.getIsEnableSpec()!=null && goods.getIsEnableSpec().length()>0){
                 criteria.andIsEnableSpecLike("%"+goods.getIsEnableSpec()+"%");
             }
-            if(goods.getIsDelete()!=null && goods.getIsDelete().length()>0){
+            if(goods.getIsDelete()!=null){
                 criteria.andIsDeleteLike("%"+goods.getIsDelete()+"%");
             }
 
@@ -213,5 +212,26 @@ public class GoodsServiceImpl implements GoodsService {
         criteria.andGoodsIdIn( Arrays.asList(goodsIds));//指定条件：SPUID集合
 
         return itemMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<GoodsVO> findMallGoods() {
+        List<GoodsVO> goodsVOS = new ArrayList<>();
+        List<Goods> mallGoods = goodsMapper.findMallGoods();
+        for (int i=0;i<mallGoods.size();i++){
+            GoodsVO goodsVO = new GoodsVO();
+            GoodsDesc goodsDesc = goodsDescMapper.selectByPrimaryKey(mallGoods.get(i).getId());
+            String itemImages = goodsDesc.getItemImages();
+            String imageUrl = itemImages.substring(itemImages.indexOf("\"url\":\"")+7,itemImages.indexOf("\"}]"));
+            goodsDesc.setItemImages(imageUrl);
+            goodsVO.setGoodsDesc(goodsDesc);
+//            Long[] ids = new Long[1];
+//            ids[0] = mallGoods.get(i).getId();
+//            List<Item> itemGoods = findItemListByGoodsIdListAndStatus(ids, "1");
+//            mallGoods.get(i).setId(itemGoods.get(0).getId());
+            goodsVO.setGoods(mallGoods.get(i));
+            goodsVOS.add(goodsVO);
+        }
+        return goodsVOS;
     }
 }

@@ -75,6 +75,7 @@ com\tust\pojo\ProvincesExample$GeneratedCriteria.class
 com\tust\pojo\OrderItemExample.class
 com\tust\pojo\Specification.class
 com\tust\pojo\GoodsExample.class
+com\tust\pojo\Announcement.class
 com\tust\pojo\OrderExample$Criterion.class
 com\tust\pojo\AddressExample$Criteria.class
 com\tust\pojo\ProvincesExample$Criterion.class

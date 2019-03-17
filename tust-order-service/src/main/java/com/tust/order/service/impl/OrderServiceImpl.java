@@ -1,5 +1,6 @@
 package com.tust.order.service.impl;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -59,11 +60,13 @@ public class OrderServiceImpl implements OrderService {
 	 * 增加
 	 */
 	@Override
-	public void add(Order order) {
+	public long[] add(Order order) {
 		
 		//1.从redis中提取购物车列表
 		List<CartVo> cartList= (List<CartVo>) redisTemplate.boundHashOps("cartList").get(order.getUserId());
-				
+		int length = cartList.size();
+		long[] orderIds = new long[length];
+		int i=0;
 		//2.循环购物车列表添加订单
 		for(CartVo  cart:cartList){
 			Order tbOrder=new Order();
@@ -91,12 +94,17 @@ public class OrderServiceImpl implements OrderService {
 			}
 			
 			tbOrder.setPayment(new BigDecimal(money));//合计
-			
+
 			orderMapper.insert(tbOrder);
+
+			orderIds[i] = orderId;
+			i++;
+
 		}
 		
 		//3.清除redis中的购物车
 		redisTemplate.boundHashOps("cartList").delete(order.getUserId());
+		return orderIds;
 	}
 
 	

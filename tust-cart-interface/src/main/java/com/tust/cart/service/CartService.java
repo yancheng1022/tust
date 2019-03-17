@@ -38,4 +38,11 @@ public interface CartService {
      * @Description: 合并购物车
     */
     public List<CartVo> mergeCartList(List<CartVo>cartVoList1,List<CartVo>cartVoList2);
+
+    /**
+     * @Author: Yancheng Guo
+     * @Date: 2019/3/14 10:01
+     * @Description: 删除redis购物车
+    */
+    void deleteRedis(Long ids[],String name);
 }

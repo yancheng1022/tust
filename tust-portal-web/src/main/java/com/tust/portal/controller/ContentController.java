@@ -18,6 +18,11 @@ public class ContentController {
     public List<Content>findByCategoryId(Long categoryId){
         List<Content> contentList = contentService.findByCategoryId(categoryId);
         return contentList;
+    }
 
+    @RequestMapping("/findAnnouncement")
+    public String findAnnouncement(){
+        String announcement = contentService.findAnnouncement();
+        return announcement;
     }
 }

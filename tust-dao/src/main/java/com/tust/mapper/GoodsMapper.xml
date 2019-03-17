@@ -386,4 +386,9 @@
       is_delete = #{isDelete,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="findMallGoods" resultMap="BaseResultMap">
+    select * from t_goods where seller_id = 'kaka' and is_delete != 1 ORDER BY id DESC limit 0,5
+  </select>
+
 </mapper>

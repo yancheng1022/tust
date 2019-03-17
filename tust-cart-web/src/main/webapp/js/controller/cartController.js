@@ -1,5 +1,6 @@
 //购物车控制层
-app.controller('cartController',function($scope,cartService){
+app.controller('cartController',function($scope,$controller,cartService){
+	$controller('baseController',{$scope:$scope});//继承
 	//查询购物车列表
 	$scope.findCartList=function(){
 		cartService.findCartList().success(
@@ -22,7 +23,25 @@ app.controller('cartController',function($scope,cartService){
 			}		
 		);		
 	}
-	
+
+	//搜索  （传递参数）
+	$scope.search=function(){
+		location.href="http://localhost:9104/search.html#?keywords="+$scope.keywords;
+	}
+
+	//批量删除
+	$scope.dele=function(){
+		//获取选中的复选框
+		cartService.dele( $scope.selectIds ).success(
+			function(response){
+				if(response.success){
+					console.log("11")
+					$scope.reloadList();//刷新列表
+					$scope.selectIds=[];
+				}
+			}
+		);
+	}
 	//求合计
 	/*
 	sum=function(){
@@ -85,18 +104,7 @@ app.controller('cartController',function($scope,cartService){
 
 		cartService.submitOrder( $scope.order ).success(
 			function(response){
-				//alert(response.message);
-				if(response.success){
-					//页面跳转
-					if($scope.order.paymentType=='1'){//如果是微信支付，跳转到支付页面
-						location.href="pay.html";
-					}else{//如果货到付款，跳转到提示页面
-						location.href="paysuccess.html";
-					}
-
-				}else{
-					alert(response.message);	//也可以跳转到提示页面
-				}
+				console.log(response[0])
 
 			}
 		);

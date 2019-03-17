@@ -111,6 +111,11 @@
             <groupId>com.github.miemiedev</groupId>
             <artifactId>mybatis-paginator</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.tust</groupId>
+            <artifactId>tust-sellergoods-interface</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 

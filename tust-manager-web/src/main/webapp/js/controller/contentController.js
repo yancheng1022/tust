@@ -102,7 +102,28 @@ app.controller('contentController' ,function($scope,$controller   ,contentServic
 			}
 		);
 	}
-	
+
+	//查询网站公告
+	$scope.findAnnouncement=function(){
+		contentService.findAnnouncement().success(
+			function(response){
+				$scope.announcement = response;
+			}
+		);
+	}
+
+	//保存
+	$scope.updateAnnouncement=function(){
+		var serviceObject;//服务层对象
+
+		serviceObject=contentService.updateAnnouncement( $scope.announcement ); //修改
+		console.log($scope.announcement );
+		serviceObject.success(
+			function(response){
+				alert(response.message);
+			}
+		);
+	}
 	$scope.status=['无效','有效'];
     
 });	

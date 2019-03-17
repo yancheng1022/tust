@@ -80,7 +80,9 @@ app.controller('goodsController' ,function($scope,$controller ,$location  ,goods
 		//获取选中的复选框
 		goodsService.dele( $scope.selectIds ).success(
 			function(response){
+				console.log("11");
 				if(response.success){
+					console.log(response);
 					$scope.reloadList();//刷新列表
 					$scope.selectIds=[];
 				}

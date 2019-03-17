@@ -1,5 +1,5 @@
  //控制层 
-app.controller('sellerController' ,function($scope,$controller   ,sellerService){	
+app.controller('sellerController' ,function($scope,$controller,sellerService){
 	
 	$controller('baseController',{$scope:$scope});//继承
 	
@@ -23,18 +23,27 @@ app.controller('sellerController' ,function($scope,$controller   ,sellerService)
 	}
 	
 	//查询实体 
-	$scope.findOne=function(id){				
+	$scope.findOne=function(id){
 		sellerService.findOne(id).success(
 			function(response){
 				$scope.entity= response;					
 			}
 		);				
 	}
+
+	//查询当前登陆用户
+	$scope.findLoginUser=function(){
+		sellerService.findLoginUser().success(
+			function(response){
+				$scope.entity= response;
+			}
+		);
+	}
 	
 	//保存 
 	$scope.save=function(){				
 		var serviceObject;//服务层对象  				
-		if($scope.entity.id!=null){//如果有ID
+		if($scope.entity.sellerId!=null){//如果有ID
 			serviceObject=sellerService.update( $scope.entity ); //修改  
 		}else{
 			serviceObject=sellerService.add( $scope.entity  );//增加 
@@ -71,7 +80,9 @@ app.controller('sellerController' ,function($scope,$controller   ,sellerService)
 		//获取选中的复选框			
 		sellerService.dele( $scope.selectIds ).success(
 			function(response){
+				console.log($scope.selectIds);
 				if(response.success){
+
 					$scope.reloadList();//刷新列表
 					$scope.selectIds=[];
 				}						
@@ -90,5 +101,7 @@ app.controller('sellerController' ,function($scope,$controller   ,sellerService)
 			}			
 		);
 	}
+
+
     
 });	

@@ -7,6 +7,7 @@ import com.tust.pojo.Content;
 import com.tust.pojo.Result;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.dubbo.config.annotation.Reference;
 
@@ -15,8 +16,9 @@ import com.alibaba.dubbo.config.annotation.Reference;
  * @author Administrator
  *
  */
-@RestController
+
 @RequestMapping("/content")
+@RestController
 public class ContentController {
 
 	@Reference
@@ -104,6 +106,34 @@ public class ContentController {
 	public PageInfo search(@RequestBody Content content, int page, int rows  ){
 		PageInfo page1 = contentService.findPage(content, page, rows);
 		return page1;
+	}
+
+	/**
+	 * @Author: Yancheng Guo
+	 * @Date: 2019/3/7 17:23
+	 * @Description: 更新站长公告
+	*/
+	@RequestMapping("/updateAnnouncement")
+	public Result updateAnnouncement(@RequestBody String announcement){
+		try {
+			contentService.updateAnnouncement(announcement);
+			return new Result(true, "更新成功");
+		}catch (Exception e){
+			e.printStackTrace();
+			return new Result(false, "更新失败");
+		}
+
+	}
+
+	/**
+	 * @Author: Yancheng Guo
+	 * @Date: 2019/3/7 18:07
+	 * @Description: 查找网站公告
+	*/
+	@RequestMapping("/findAnnouncement")
+	public String findAnnouncement(){
+		String announcement = contentService.findAnnouncement();
+		return announcement;
 	}
 	
 }

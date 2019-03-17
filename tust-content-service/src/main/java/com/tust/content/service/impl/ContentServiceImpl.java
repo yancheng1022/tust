@@ -3,6 +3,7 @@ import java.util.List;
 
 import com.github.pagehelper.PageInfo;
 import com.tust.content.service.ContentService;
+import com.tust.mapper.AnnouncementMapper;
 import com.tust.mapper.ContentMapper;
 import com.tust.pojo.Content;
 import com.tust.pojo.ContentExample;
@@ -28,7 +29,8 @@ public class ContentServiceImpl implements ContentService {
 	private ContentMapper contentMapper;
 	@Autowired
 	private RedisTemplate redisTemplate;
-	
+	@Autowired
+	private AnnouncementMapper announcementMapper;
 	/**
 	 * 查询全部
 	 */
@@ -148,5 +150,14 @@ public class ContentServiceImpl implements ContentService {
 				
 		return list;
 	}
-	
+
+	@Override
+	public void updateAnnouncement(String announcement) {
+		announcementMapper.updateAnnouncement(announcement);
+	}
+
+	@Override
+	public String findAnnouncement() {
+		return announcementMapper.findAnnouncement();
+	}
 }

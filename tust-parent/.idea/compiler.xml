@@ -21,6 +21,7 @@
         <module name="tust-page-interface" />
         <module name="tust-page-service" />
         <module name="tust-page-web" />
+        <module name="tust-pay-interface" />
         <module name="tust-pojo" />
         <module name="tust-portal-web" />
         <module name="tust-search-interface" />
@@ -35,5 +36,8 @@
         <module name="tust-user-web" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="tust-pay-web" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

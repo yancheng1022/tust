@@ -38,7 +38,9 @@
       <set>
         <option value="$PROJECT_DIR$/tust-common/pom.xml" />
         <option value="$PROJECT_DIR$/tust-dao/pom.xml" />
+        <option value="$PROJECT_DIR$/tust-pay-interface/pom.xml" />
         <option value="$PROJECT_DIR$/tust-pojo/pom.xml" />
+        <option value="$PROJECT_DIR$/../tust-pay-web/pom.xml" />
       </set>
     </option>
   </component>

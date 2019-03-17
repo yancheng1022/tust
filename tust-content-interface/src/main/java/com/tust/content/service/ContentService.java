@@ -65,5 +65,13 @@ public interface ContentService {
 	 * @return
 	 */
 	public List<Content> findByCategoryId(Long categoryId);
+	/**
+	 * @Author: Yancheng Guo
+	 * @Date: 2019/3/7 17:09
+	 * @Description: 更新商城公告
+	*/
+	public void updateAnnouncement(String announcement);
+
+	public String findAnnouncement();
 
 }
