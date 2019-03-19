@@ -104,18 +104,7 @@ app.controller('cartController',function($scope,$controller,cartService){
 
 		cartService.submitOrder( $scope.order ).success(
 			function(response){
-
-				//alert(response.message);
-				if(response.success){
-					//页面跳转
-					if($scope.order.paymentType=='1'){//如果是微信支付，跳转到支付页面
-						console.log(response)
-						//location.href='http://localhost:9107/goAlipay';
-					}
-
-				}else{
-					alert(response.message);	//也可以跳转到提示页面
-				}
+				location.href="http://localhost:9107/order/goAliPay.do";
 
 			}
 		);

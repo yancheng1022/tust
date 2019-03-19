@@ -104,7 +104,7 @@ app.controller('cartController',function($scope,$controller,cartService){
 
 		cartService.submitOrder( $scope.order ).success(
 			function(response){
-				console.log(response[0])
+				location.href="http://localhost:9107/order/goAliPay.do";
 
 			}
 		);

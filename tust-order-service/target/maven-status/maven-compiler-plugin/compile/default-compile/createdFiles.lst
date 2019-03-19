@@ -1,1 +1,2 @@
 com\tust\order\service\impl\OrderServiceImpl.class
+com\tust\order\config\AlipayConfig.class

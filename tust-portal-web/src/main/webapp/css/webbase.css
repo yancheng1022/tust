@@ -82,7 +82,6 @@ ul.brand-list li {
 
 .Left {
     width: 225px;
-    border: 1px solid red;
 }
 
 .Center {
@@ -94,7 +93,7 @@ ul.brand-list li {
 .Right {
     width: 225px;
     position: relative;
-    border: 1px solid red;
+
 }
 
 .sui-form {
@@ -267,7 +266,7 @@ ul.brand-list li {
 
 .SortList .all-sort-list {
     background: white;
-    border: 1px solid black;
+
 }
 
 .navArea ul.nav li {
@@ -2044,14 +2043,14 @@ template {
 
 .mall-goods{
     height: 68px;
-    border: 1px solid green;
+
     text-align: center;
 
 }
 .goods-img{
     height: 60px;
     width: 60px;
-    border:1px solid red;
+
     float:left;
 }
 .goods-name{

@@ -1,15 +1,25 @@
 package com.tust.cart.controller;
+import java.math.BigDecimal;
 import java.util.List;
 
+import com.alipay.api.AlipayApiException;
+import com.alipay.api.AlipayClient;
+import com.alipay.api.DefaultAlipayClient;
+import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.github.pagehelper.PageInfo;
 import com.tust.order.service.OrderService;
 import com.tust.pojo.Order;
+import com.tust.pojo.PayLog;
 import com.tust.pojo.Result;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.dubbo.config.annotation.Reference;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/order")
@@ -17,7 +27,7 @@ public class OrderController {
 
 	@Reference
 	private OrderService orderService;
-	
+
 	/**
 	 * 返回全部列表
 	 * @return
@@ -43,15 +53,15 @@ public class OrderController {
 	 * @return
 	 */
 	@RequestMapping("/add")
-	public long[] add(@RequestBody Order order){
+	public void add(@RequestBody Order order){
 		
 		//获取当前登录人账号
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		order.setUserId(username);
 		order.setSourceType("2");//订单来源  PC
 
-		long[] orderIds = orderService.add(order);
-		return orderIds;
+		orderService.add(order);
+
 	}
 	
 	/**
@@ -100,6 +110,14 @@ public class OrderController {
 	@RequestMapping("/search")
 	public PageInfo search(@RequestBody Order order, int page, int rows  ){
 		return orderService.findPage(order, page, rows);		
+	}
+
+	@RequestMapping("/goAliPay")
+	public String goAliPay() throws AlipayApiException {
+		//获取当前登录人账号
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		return orderService.goAliPay(username);
+
 	}
 	
 }

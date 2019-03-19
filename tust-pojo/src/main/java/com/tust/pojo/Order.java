@@ -1,10 +1,15 @@
 package com.tust.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class Order implements Serializable {
+
     private Long orderId;
 
     private BigDecimal payment;
@@ -59,6 +64,7 @@ public class Order implements Serializable {
         return orderId;
     }
 
+    @JsonSerialize(using = ToStringSerializer.class)
     public void setOrderId(Long orderId) {
         this.orderId = orderId;
     }

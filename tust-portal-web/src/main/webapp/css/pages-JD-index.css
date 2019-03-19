@@ -61,7 +61,7 @@ em {
 }
 
 .news {
-    border: 1px solid green;
+    border: 1px solid black;
     margin-top: 5px;
     position: relative;
     z-index: 3

@@ -1,4 +1,5 @@
 package com.tust.order.service;
+import com.alipay.api.AlipayApiException;
 import com.github.pagehelper.PageInfo;
 import com.tust.pojo.Order;
 
@@ -32,7 +33,7 @@ public interface OrderService {
 	 * @Date: 2019/1/29 20:13
 	 * @Description: 增加
 	*/
-	public long[] add(Order order);
+	public void add(Order order);
 	
 	
 	/**
@@ -64,5 +65,18 @@ public interface OrderService {
 	 * @Description: 分页
 	*/
 	public PageInfo findPage(Order order, int pageNum, int pageSize);
-	
+
+	/**
+	 * @Author: Yancheng Guo
+	 * @Date: 2019/3/19 16:05
+	 * @Description: 跳转到支付宝支付页面
+	*/
+	public String goAliPay(String username) throws AlipayApiException;
+
+	/**
+	 * @Author: Yancheng Guo
+	 * @Date: 2019/3/19 16:53
+	 * @Description: 支付成功
+	*/
+	public void paySuccess(String out_trade_no);
 }
