@@ -1,6 +1,7 @@
 com\tust\sellergoods\service\impl\SellerServiceImpl.class
 com\tust\sellergoods\service\impl\ItemCatServiceImpl.class
 com\tust\sellergoods\service\impl\TypeTemplateServiceImpl.class
+com\tust\sellergoods\service\impl\ItemServiceImpl.class
 com\tust\sellergoods\service\impl\SpecificationServiceImpl.class
 com\tust\sellergoods\service\impl\BrandServiceImpl.class
 com\tust\sellergoods\service\impl\GoodsServiceImpl.class

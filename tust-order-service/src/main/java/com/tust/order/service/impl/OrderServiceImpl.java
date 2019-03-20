@@ -10,15 +10,13 @@ import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.github.pagehelper.PageInfo;
 import com.tust.VO.CartVo;
+import com.tust.mapper.ItemMapper;
 import com.tust.mapper.OrderItemMapper;
 import com.tust.mapper.OrderMapper;
 import com.tust.mapper.PayLogMapper;
 import com.tust.order.config.AlipayConfig;
 import com.tust.order.service.OrderService;
-import com.tust.pojo.Order;
-import com.tust.pojo.OrderExample;
-import com.tust.pojo.OrderItem;
-import com.tust.pojo.PayLog;
+import com.tust.pojo.*;
 import com.tust.utils.IdWorker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -60,6 +58,9 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Autowired
 	private OrderItemMapper orderItemMapper;
+	
+	@Autowired
+	private ItemMapper itemMapper;
 	
 	/**
 	 * 增加
@@ -221,7 +222,7 @@ public class OrderServiceImpl implements OrderService {
 
 		//设置请求参数
 		AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
-//		alipayRequest.setReturnUrl(AlipayConfig.return_url);
+		alipayRequest.setReturnUrl(AlipayConfig.return_url);
 //		alipayRequest.setNotifyUrl(AlipayConfig.notify_url);
 
 		//商户订单号，商户网站订单系统中唯一订单号，必填
@@ -249,21 +250,40 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public void paySuccess(String out_trade_no) {
+	public void paySuccess(String out_trade_no,String trade_no) {
 		//修改支付日志的状态和相关字段
 		PayLog payLog = payLogMapper.selectByPrimaryKey(out_trade_no);
 		payLog.setPayTime(new Date());
 		payLog.setTradeState("1");
-
+		payLog.setTransactionId(trade_no);
 		payLogMapper.updateByPrimaryKey(payLog);
 
-		//修改订单状态
+		//修改订单状态 商品状态
 		String orderList = payLog.getOrderList();
 		String[] orderIds = orderList.split(",");
 		for (String orderId:orderIds){
 			Order order = orderMapper.selectByPrimaryKey(Long.valueOf(orderId));
 			order.setStatus("2");//已付款状态
+			order.setPaymentTime(new Date());//支付时间
+			orderMapper.updateByPrimaryKey(order);
+
+			//修改商品状态
+			OrderItemExample orderItemExample = new OrderItemExample();
+			OrderItemExample.Criteria criteria = orderItemExample.createCriteria();
+			criteria.andOrderIdEqualTo(Long.valueOf(orderId));
+			List<OrderItem> orderItems = orderItemMapper.selectByExample(orderItemExample);
+			for (OrderItem orderItem:orderItems){
+				ItemExample itemExample = new ItemExample();
+				ItemExample.Criteria criteria1 = itemExample.createCriteria();
+				criteria1.andIdEqualTo(orderItem.getItemId());
+				List<Item> itemList = itemMapper.selectByExample(itemExample);
+
+				//排行榜
+				redisTemplate.boundZSetOps("itemSort").incrementScore(itemList.get(0).getId(),1);
+			}
 		}
+
+
 
 		//清除缓存中的paylog
 		redisTemplate.boundHashOps("payLog").delete(payLog.getUserId());

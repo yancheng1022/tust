@@ -19,4 +19,10 @@ app.service('contentService' ,function($http){
 	this.findMallGoods=function(){
 		return $http.post('../goods/findMallGoods.do');
 	}
+
+
+	//查询排行榜
+	this.findItemSorted=function(){
+		return $http.post('../goods/findItemSorted.do');
+	}
 });

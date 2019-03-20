@@ -78,5 +78,5 @@ public interface OrderService {
 	 * @Date: 2019/3/19 16:53
 	 * @Description: 支付成功
 	*/
-	public void paySuccess(String out_trade_no);
+	public void paySuccess(String out_trade_no,String trade_no);
 }

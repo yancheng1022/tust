@@ -39,4 +39,14 @@ app.controller("contentController",function($scope,contentService){
 			}
 		);
 	}
+
+
+	$scope.findItemSorted=function(){
+		contentService.findItemSorted().success(
+			function(response){
+				console.log(response);
+				$scope.itemSorted = response;
+			}
+		);
+	}
 });
