@@ -22,7 +22,7 @@ import java.util.List;
 public class GoodsController {
     @Reference
     private GoodsService goodsService;
-    @Reference(timeout = 9999999)
+    @Reference
     private ItemSearchService itemSearchService;
 
 

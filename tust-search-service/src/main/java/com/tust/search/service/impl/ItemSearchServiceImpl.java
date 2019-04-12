@@ -24,7 +24,7 @@ import org.springframework.data.solr.core.query.result.ScoredPage;
 import com.alibaba.dubbo.config.annotation.Service;
 
 import com.alibaba.dubbo.config.annotation.Service;
-@Service(timeout=5000)
+@Service(timeout=6000)
 public class ItemSearchServiceImpl implements ItemSearchService {
 
     @Autowired

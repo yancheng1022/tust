@@ -11,7 +11,7 @@
     <dubbo:protocol name="dubbo" port="20886"></dubbo:protocol> 
     
 	<dubbo:application name="tust-user-service"/>
-    <dubbo:registry address="zookeeper://39.108.0.144:2181"/>
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
     <dubbo:annotation package="com.tust.user.service.impl" />
    
    

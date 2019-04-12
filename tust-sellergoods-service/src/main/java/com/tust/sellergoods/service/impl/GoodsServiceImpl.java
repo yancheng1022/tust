@@ -18,7 +18,7 @@ import java.io.FileReader;
 import java.util.*;
 import java.util.List;
 
-@Service
+@Service(timeout = 6000)
 //@Transactional
 public class GoodsServiceImpl implements GoodsService {
     @Autowired
@@ -181,6 +181,9 @@ public class GoodsServiceImpl implements GoodsService {
             }
             if(goods.getIsDelete()!=null){
                 criteria.andIsDeleteLike("%"+goods.getIsDelete()+"%");
+            }
+            if(goods.getIsDelete()==null){
+                criteria.andIsDeleteNotEqualTo("1");
             }
 
         }

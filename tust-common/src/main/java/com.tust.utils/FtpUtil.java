@@ -41,7 +41,7 @@ public class FtpUtil {
                     tempPath += "/" + dir;
                     if (!ftp.changeWorkingDirectory(tempPath)) {
                         if (!ftp.makeDirectory(tempPath)) {
-                            return result;
+                           return result;
                         } else {
                             ftp.changeWorkingDirectory(tempPath);
                         }
