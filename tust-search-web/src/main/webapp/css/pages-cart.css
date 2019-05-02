@@ -96,12 +96,14 @@
 
 .good-item .item-msg {
 	padding-right: 30px;
+
 }
 
 .item-img {
 	float: left;
 	width: 100px;
-	height: 90px
+	height: 100px;
+
 }
 
 .item-txt {

@@ -70,13 +70,14 @@ public class CartController {
 	
 	@RequestMapping("/addGoodsToCartList")
 	public Result addGoodsToCartList(Long itemId, Integer num){
-		//设置允许访问的域
-		response.setHeader("Access-Control-Allow-Origin", "http://localhost:9105");
-		//允许携带凭证（cookie）
-		response.setHeader("Access-Control-Allow-Credentials", "true");
 		//当前登录人账号
 		String name = SecurityContextHolder.getContext().getAuthentication().getName();
 		System.out.println("当前登录人："+name);
+//		//设置允许访问的域
+//		response.setHeader("Access-Control-Allow-Origin", "*");
+//		//允许携带凭证（cookie）
+//		response.setHeader("Access-Control-Allow-Credentials", "true");
+
 		
 	
 		

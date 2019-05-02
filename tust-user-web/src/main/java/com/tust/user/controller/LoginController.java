@@ -9,10 +9,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/login")
+
 public class LoginController {
 
-    @RequestMapping("/name")
+    @RequestMapping("/login/name")
     public Map showName(){
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         Map map = new HashMap();

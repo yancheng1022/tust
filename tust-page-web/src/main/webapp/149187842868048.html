@@ -20,16 +20,10 @@
     <script>
         var skuList=[
                      {
-             id:1369325,
-             title:'小米8 移动4G 128G',
-             price:2500,
-             spec:{"网络":"移动4G","机身内存":"128G"}
-           } ,
-           {
-             id:1369326,
-             title:'小米8 联通4G 128G',
-             price:2500,
-             spec:{"网络":"联通4G","机身内存":"128G"}
+             id:1369342,
+             title:'短袖T恤男',
+             price:88,
+             spec:{}
            } ,
         ];
 
@@ -63,10 +57,7 @@
 						<div class="search">
 							<form action="" class="sui-form form-inline">
 								<!--searchAutoComplete-->
-								<div class="input-append">
-									<input type="text" id="autocomplete" type="text" class="input-error input-xxlarge" />
-									<button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
-								</div>
+
 							</form>
 						</div>
 
@@ -75,9 +66,8 @@
 						<div class="fr shopcar">
 							<div class="show-shopcar" id="shopcar">
 								<span class="car"></span>
-								<a class="sui-btn btn-default btn-xlarge" href="cart.html" target="_blank">
+								<a class="sui-btn btn-default btn-xlarge" href="http://localhost:9107" target="_blank">
 									<span>我的购物车</span>
-									<i class="shopnum">0</i>
 								</a>
 
 							</div>
@@ -96,13 +86,13 @@
 			<div class="crumb-wrap">
 				<ul class="sui-breadcrumb">
 					<li>
-						<a href="#">手机</a>
+						<a href="#">服饰</a>
 					</li>
 					<li>
-						<a href="#">手机通讯</a>
+						<a href="#">衣服</a>
 					</li>
 					<li>
-						<a href="#">手机</a>
+						<a href="#">T恤</a>
 					</li>	
 							
 				</ul>
@@ -115,7 +105,7 @@
 						<!--默认第一个预览-->
 						<div id="preview" class="spec-preview">
 							<span class="jqzoom">
-							     <img jqimg="http://127.0.0.1:2222/images/2019/03/09/1552125683383513551.jpg" src="http://127.0.0.1:2222/images/2019/03/09/1552125683383513551.jpg" width="400px" height="400px" />
+							     <img jqimg="http://127.0.0.1:2222/images/2019/04/26/1556273457646678627.jpg" src="http://127.0.0.1:2222/images/2019/04/26/1556273457646678627.jpg" style="width:400px; height:400px" />
 							</span>
 						</div>
 						<!--下方的缩略图-->
@@ -124,7 +114,7 @@
 							<!--左右按钮-->
 							<div class="items">
 								<ul>
-									  <li><img src="http://127.0.0.1:2222/images/2019/03/09/1552125683383513551.jpg" bimg="http://127.0.0.1:2222/images/2019/03/09/1552125683383513551.jpg" onmousemove="preview(this)" /></li>
+									  <li><img src="http://127.0.0.1:2222/images/2019/04/26/1556273457646678627.jpg" bimg="http://127.0.0.1:2222/images/2019/04/26/1556273457646678627.jpg" onmousemove="preview(this)" /></li>
 								</ul>
 							</div>
 							<a class="next">&gt;</a>
@@ -135,7 +125,7 @@
 					<div class="sku-name">
 						<h4>{{sku.title}}</h4>
 					</div>
-					<div class="news"><span>高颜值 幸运数 </span></div>
+					<div class="news"><span>春夏季圆领五分袖印花刺绣上衣 </span></div>
 					<div class="summary">
 						<div class="summary-wrap">
 							<div class="fl title">
@@ -153,39 +143,6 @@
 
 					<div class="clearfix choose">
 						<div id="specification" class="summary-wrap clearfix">
-							
-							  <dl>
-								<dt>
-									<div class="fl title">
-									<i>网络</i>
-								</div>
-								</dt>
-								
-								  <dd><a href="javascript:;" 
-								        class="{{isSelected('网络','移动4G')?'selected':''}}"
-								        ng-click="selectSpecification('网络','移动4G')">移动4G
-								        <span title="点击取消选择">&nbsp;</span>
-								        </a></dd>
-								  <dd><a href="javascript:;" 
-								        class="{{isSelected('网络','联通4G')?'selected':''}}"
-								        ng-click="selectSpecification('网络','联通4G')">联通4G
-								        <span title="点击取消选择">&nbsp;</span>
-								        </a></dd>
-							  </dl>
-							
-							  <dl>
-								<dt>
-									<div class="fl title">
-									<i>机身内存</i>
-								</div>
-								</dt>
-								
-								  <dd><a href="javascript:;" 
-								        class="{{isSelected('机身内存','128G')?'selected':''}}"
-								        ng-click="selectSpecification('机身内存','128G')">128G
-								        <span title="点击取消选择">&nbsp;</span>
-								        </a></dd>
-							  </dl>
 							
 						</div>
 					
@@ -237,18 +194,16 @@
 						<div class="tab-content tab-wraped">
 							<div id="one" class="tab-pane active">
 								<ul class="goods-intro unstyled">
-									      <li>内存大小：256G</li>
-									      <li>颜色：蓝色</li>
 								</ul>
 								<div class="intro-detail">
-									高颜值 幸运数
+									型男改造计划
 								</div>
 							</div>
 							<div id="two" class="tab-pane">
 								<p>纸盒</p>
 							</div>
 							<div id="three" class="tab-pane">
-								<p>一年包换</p>
+								<p>三天包退</p>
 							</div>
 							<div id="four" class="tab-pane">
 								<p>商品评价</p>

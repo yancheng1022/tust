@@ -12,4 +12,5 @@ public interface ItemService {
      * @Description: 查询商品排行榜列表
     */
     public List<Item> findItemSorted();
+    public void updateStatus(Long []ids,String status);
 }

@@ -33,7 +33,7 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/order")
 public class OrderController {
 
-	@Reference
+	@Reference(timeout = 6000 )
 	private OrderService orderService;
 
 	/**

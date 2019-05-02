@@ -9,7 +9,7 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <dubbo:protocol name="dubbo" port="20884"></dubbo:protocol>
-	<dubbo:application name="pinyougou-search-service"/>  
+	<dubbo:application name="tust-search-service"/>
     <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
     <dubbo:annotation package="com.tust.search.service.impl" />
    

@@ -1,4 +1,4 @@
-app.controller('searchController',function($scope,$location,searchService){
+app.controller('searchController',function($scope,$location,$http,searchService){
 
     //定义搜索对象的结构  category:商品分类
     $scope.searchMap={'keywords':'','category':'','brand':'','spec':{},'price':'','pageNo':1,'pageSize':40,'sort':'','sortField':''};
@@ -121,6 +121,21 @@ app.controller('searchController',function($scope,$location,searchService){
     $scope.loadkeywords=function(){
         $scope.searchMap.keywords= $location.search()['keywords'];
         $scope.search();//查询
+    }
+
+    //添加商品到购物车
+    $scope.addToCart=function(id){
+        console.log(id);
+        $http.get('http://localhost:9107/cart/addGoodsToCartList.do?itemId='
+            +id+'&num=1',{'withCredentials':true}).success(
+            function(response){
+                if(response.success){
+                    location.href='http://localhost:9107/cart.html';
+                }else{
+                    alert(response.message);
+                }
+            }
+        );
     }
 
 });

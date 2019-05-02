@@ -6,6 +6,7 @@ import com.tust.pojo.Goods;
 import com.tust.pojo.Item;
 import com.tust.sellergoods.service.GoodsService;
 import com.tust.sellergoods.service.ItemService;
+import org.junit.rules.Timeout;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +17,7 @@ import java.util.List;
 public class GoodsController {
     @Reference
     private GoodsService goodsService;
-    @Reference
+    @Reference(timeout = 6000)
     private ItemService itemService;
 
     @RequestMapping("/findMallGoods")

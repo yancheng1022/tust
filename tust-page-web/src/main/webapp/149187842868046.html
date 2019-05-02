@@ -20,15 +20,27 @@
     <script>
         var skuList=[
                      {
-             id:1369321,
-             title:'OPPO R17 Pro 电信4G 128G',
-             price:3999,
-             spec:{"网络":"电信4G","机身内存":"128G"}
+             id:1369337,
+             title:'iphone 8 移动4G 64G',
+             price:0,
+             spec:{"网络":"移动4G","机身内存":"64G"}
            } ,
            {
-             id:1369322,
-             title:'OPPO R17 Pro 联通4G 128G',
-             price:3999,
+             id:1369338,
+             title:'iphone 8 移动4G 128G',
+             price:0,
+             spec:{"网络":"移动4G","机身内存":"128G"}
+           } ,
+           {
+             id:1369339,
+             title:'iphone 8 联通4G 64G',
+             price:0,
+             spec:{"网络":"联通4G","机身内存":"64G"}
+           } ,
+           {
+             id:1369340,
+             title:'iphone 8 联通4G 128G',
+             price:0,
              spec:{"网络":"联通4G","机身内存":"128G"}
            } ,
         ];
@@ -92,7 +104,7 @@
 			<div class="crumb-wrap">
 				<ul class="sui-breadcrumb">
 					<li>
-						<a href="#">手机</a>
+						<a href="#">手机/数码</a>
 					</li>
 					<li>
 						<a href="#">手机通讯</a>
@@ -111,7 +123,7 @@
 						<!--默认第一个预览-->
 						<div id="preview" class="spec-preview">
 							<span class="jqzoom">
-							     <img jqimg="http://127.0.0.1:2222/images/2019/03/09/1552123453575452841.jpg" src="http://127.0.0.1:2222/images/2019/03/09/1552123453575452841.jpg" width="400px" height="400px" />
+							     <img jqimg="http://127.0.0.1:2222/images/2019/04/24/1556100654643666260.jpg" src="http://127.0.0.1:2222/images/2019/04/24/1556100654643666260.jpg" width="400px" height="400px" />
 							</span>
 						</div>
 						<!--下方的缩略图-->
@@ -120,7 +132,7 @@
 							<!--左右按钮-->
 							<div class="items">
 								<ul>
-									  <li><img src="http://127.0.0.1:2222/images/2019/03/09/1552123453575452841.jpg" bimg="http://127.0.0.1:2222/images/2019/03/09/1552123453575452841.jpg" onmousemove="preview(this)" /></li>
+									  <li><img src="http://127.0.0.1:2222/images/2019/04/24/1556100654643666260.jpg" bimg="http://127.0.0.1:2222/images/2019/04/24/1556100654643666260.jpg" onmousemove="preview(this)" /></li>
 								</ul>
 							</div>
 							<a class="next">&gt;</a>
@@ -131,7 +143,7 @@
 					<div class="sku-name">
 						<h4>{{sku.title}}</h4>
 					</div>
-					<div class="news"><span>超高颜值 </span></div>
+					<div class="news"><span>【4.25Apple超品日来袭！】科技新宠iPhoneXR低至4799元，小屏经典iPhone7限量特价！ </span></div>
 					<div class="summary">
 						<div class="summary-wrap">
 							<div class="fl title">
@@ -158,8 +170,8 @@
 								</dt>
 								
 								  <dd><a href="javascript:;" 
-								        class="{{isSelected('网络','电信4G')?'selected':''}}"
-								        ng-click="selectSpecification('网络','电信4G')">电信4G
+								        class="{{isSelected('网络','移动4G')?'selected':''}}"
+								        ng-click="selectSpecification('网络','移动4G')">移动4G
 								        <span title="点击取消选择">&nbsp;</span>
 								        </a></dd>
 								  <dd><a href="javascript:;" 
@@ -176,6 +188,11 @@
 								</div>
 								</dt>
 								
+								  <dd><a href="javascript:;" 
+								        class="{{isSelected('机身内存','64G')?'selected':''}}"
+								        ng-click="selectSpecification('机身内存','64G')">64G
+								        <span title="点击取消选择">&nbsp;</span>
+								        </a></dd>
 								  <dd><a href="javascript:;" 
 								        class="{{isSelected('机身内存','128G')?'selected':''}}"
 								        ng-click="selectSpecification('机身内存','128G')">128G
@@ -233,18 +250,22 @@
 						<div class="tab-content tab-wraped">
 							<div id="one" class="tab-pane active">
 								<ul class="goods-intro unstyled">
-									      <li>内存大小：256G</li>
-									      <li>颜色：白色</li>
 								</ul>
 								<div class="intro-detail">
-									<span style="color:#333333;font-family:arial;font-size:16px;background-color:#FFFFFF;">采用2500万像素索尼IMX576传感器，具备f/2.0光圈，暗光噪点控制更好、色彩还原度更强，在暗光环境自拍更清晰</span>
+									<p>
+	1200万摄像头
+</p>
+<p>
+	光学变焦 全新感光元件
+</p>
 								</div>
 							</div>
 							<div id="two" class="tab-pane">
 								<p>纸盒</p>
 							</div>
 							<div id="three" class="tab-pane">
-								<p>一年包换</p>
+								<p>本产品全国联保，享受三包服务，质保期为：一年质保
+如因质量问题或故障，凭厂商维修中心或特约维修点的质量检测证明，享受7日内退货，15日内换货，15日以上在质保期内享受免费保修等三包服务！</p>
 							</div>
 							<div id="four" class="tab-pane">
 								<p>商品评价</p>

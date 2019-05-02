@@ -10,6 +10,7 @@ import com.tust.pojo.Item;
 import com.tust.pojo.Result;
 import com.tust.search.service.ItemSearchService;
 import com.tust.sellergoods.service.GoodsService;
+import com.tust.sellergoods.service.ItemService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,9 +23,10 @@ import java.util.List;
 public class GoodsController {
     @Reference
     private GoodsService goodsService;
-    @Reference
+    @Reference(timeout = 6000)
     private ItemSearchService itemSearchService;
-
+    @Reference
+    private ItemService itemService;
 
     @RequestMapping("/findAll")
     public List<Goods> findAll(){
@@ -86,6 +88,7 @@ public class GoodsController {
     public Result updateStatus(Long []ids,String status){
         try {
             goodsService.updateStatus(ids, status);
+            itemService.updateStatus(ids,status);
             if ("1".equals(status)){  //如果是1 审核通过
                 //SKU列表
                 List<Item> itemList = goodsService.findItemListByGoodsIdListAndStatus(ids, status);

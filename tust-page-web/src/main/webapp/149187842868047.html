@@ -20,16 +20,10 @@
     <script>
         var skuList=[
                      {
-             id:1369327,
-             title:'Huawei Mate X 联通4G 64G',
-             price:17500,
-             spec:{"网络":"联通4G","机身内存":"64G"}
-           } ,
-           {
-             id:1369328,
-             title:'Huawei Mate X 电信4G 64G',
-             price:17500,
-             spec:{"网络":"电信4G","机身内存":"64G"}
+             id:1369341,
+             title:'肉类良品铺子旗舰店零食大礼包组合麻辣小吃一整箱超大混装送女生',
+             price:109,
+             spec:{}
            } ,
         ];
 
@@ -92,13 +86,13 @@
 			<div class="crumb-wrap">
 				<ul class="sui-breadcrumb">
 					<li>
-						<a href="#">手机</a>
+						<a href="#">食品/生鲜/特产</a>
 					</li>
 					<li>
-						<a href="#">手机通讯</a>
+						<a href="#">食品</a>
 					</li>
 					<li>
-						<a href="#">手机</a>
+						<a href="#">零食</a>
 					</li>	
 							
 				</ul>
@@ -111,7 +105,7 @@
 						<!--默认第一个预览-->
 						<div id="preview" class="spec-preview">
 							<span class="jqzoom">
-							     <img jqimg="http://127.0.0.1:2222/images/2019/03/17/1552829759764823733.jpg" src="http://127.0.0.1:2222/images/2019/03/17/1552829759764823733.jpg" width="400px" height="400px" />
+							     <img jqimg="http://127.0.0.1:2222/images/2019/04/25/1556179208616231076.jpg" src="http://127.0.0.1:2222/images/2019/04/25/1556179208616231076.jpg" width="400px" height="400px" />
 							</span>
 						</div>
 						<!--下方的缩略图-->
@@ -120,7 +114,7 @@
 							<!--左右按钮-->
 							<div class="items">
 								<ul>
-									  <li><img src="http://127.0.0.1:2222/images/2019/03/17/1552829759764823733.jpg" bimg="http://127.0.0.1:2222/images/2019/03/17/1552829759764823733.jpg" onmousemove="preview(this)" /></li>
+									  <li><img src="http://127.0.0.1:2222/images/2019/04/25/1556179208616231076.jpg" bimg="http://127.0.0.1:2222/images/2019/04/25/1556179208616231076.jpg" onmousemove="preview(this)" /></li>
 								</ul>
 							</div>
 							<a class="next">&gt;</a>
@@ -131,7 +125,7 @@
 					<div class="sku-name">
 						<h4>{{sku.title}}</h4>
 					</div>
-					<div class="news"><span>折叠屏 </span></div>
+					<div class="news"><span>不能陪你，我就喂饱你 </span></div>
 					<div class="summary">
 						<div class="summary-wrap">
 							<div class="fl title">
@@ -153,32 +147,13 @@
 							  <dl>
 								<dt>
 									<div class="fl title">
-									<i>网络</i>
+									<i>口味</i>
 								</div>
 								</dt>
 								
 								  <dd><a href="javascript:;" 
-								        class="{{isSelected('网络','联通4G')?'selected':''}}"
-								        ng-click="selectSpecification('网络','联通4G')">联通4G
-								        <span title="点击取消选择">&nbsp;</span>
-								        </a></dd>
-								  <dd><a href="javascript:;" 
-								        class="{{isSelected('网络','电信4G')?'selected':''}}"
-								        ng-click="selectSpecification('网络','电信4G')">电信4G
-								        <span title="点击取消选择">&nbsp;</span>
-								        </a></dd>
-							  </dl>
-							
-							  <dl>
-								<dt>
-									<div class="fl title">
-									<i>机身内存</i>
-								</div>
-								</dt>
-								
-								  <dd><a href="javascript:;" 
-								        class="{{isSelected('机身内存','64G')?'selected':''}}"
-								        ng-click="selectSpecification('机身内存','64G')">64G
+								        class="{{isSelected('口味','清淡')?'selected':''}}"
+								        ng-click="selectSpecification('口味','清淡')">清淡
 								        <span title="点击取消选择">&nbsp;</span>
 								        </a></dd>
 							  </dl>
@@ -233,16 +208,17 @@
 						<div class="tab-content tab-wraped">
 							<div id="one" class="tab-pane active">
 								<ul class="goods-intro unstyled">
+									      <li>保质期：6月</li>
 								</ul>
 								<div class="intro-detail">
-									<span style="color:#666666;font-family:&quot;font-size:14px;background-color:#FFFFFF;">4000万像素+1600万像素+800万像素</span>
+									辣味零食大礼包
 								</div>
 							</div>
 							<div id="two" class="tab-pane">
-								<p>纸盒</p>
+								<p>纸箱</p>
 							</div>
 							<div id="three" class="tab-pane">
-								<p>一年包换</p>
+								<p>三天包换</p>
 							</div>
 							<div id="four" class="tab-pane">
 								<p>商品评价</p>
