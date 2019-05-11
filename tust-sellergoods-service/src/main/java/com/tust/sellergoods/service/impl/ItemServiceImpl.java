@@ -43,7 +43,6 @@ public class ItemServiceImpl implements ItemService {
                 item.setStatus(status);
                 itemMapper.updateByPrimaryKey(item);
             }
-
         }
     }
 }

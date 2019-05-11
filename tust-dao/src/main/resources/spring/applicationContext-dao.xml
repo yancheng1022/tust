@@ -22,13 +22,14 @@
         <property name="minIdle" value="5" />
     </bean>
 
-
+    <!--让spring管理sqlsessionfactory-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-
+        <!--引入数据库连接池-->
         <property name="dataSource" ref="dataSource" />
-
+        <!--加载mybatis的全局配置文件-->
         <property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml" />
     </bean>
+    <!--扫描mapper文件所在包-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.tust.mapper" />
     </bean>

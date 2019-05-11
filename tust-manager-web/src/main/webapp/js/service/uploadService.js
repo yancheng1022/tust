@@ -12,7 +12,6 @@ app.service('uploadService',function($http){
 			headers:{ 'Content-Type':undefined },
 			transformRequest: angular.identity			
 		});
-		
 	}
 	
 	

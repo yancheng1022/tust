@@ -18,5 +18,4 @@ import java.util.List;
 public class SpecificationVO implements Serializable {
     private Specification specification;
     private List<specificationOption> specificationOptionList;
-
 }
